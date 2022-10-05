@@ -10,9 +10,9 @@
 - Every pages (in the top header) provides an access to the full-text search. Search results are always items (e.g. if text is found in comment text, search result have to display link to the item with comments, not to the comment itself). If result is a collection you can either display any item or generate link to the collection.
 - Every user has its personal page where they can mange list of collections (create new, delete, or edit) — each collection in the list is a link to the collection page that contains table of items with sorting/filtering and capabilities to create new item, edit or delete existing item).
 - Every collection contains:
-- name
-- description (with markdown formatting support), topic (one value from the predefined list, for example, “Books”, “Signs”, “Silverware”), optional image (uploaded by the users into the cloud).
-  Also collection allows to specified fields which every item in this collection will have. There are fixed fields: id, name, tags. And on the collection level user can select several of the following: 3 integer fields, 3 string fields, 3 multiline text fields, 3 boolean checkboxes, 3 date fields). For all selected custom fields user specifies its name.
+ - name
+ - description (with markdown formatting support), topic (one value from the predefined list, for example, “Books”, “Signs”, “Silverware”), optional image (uploaded by the users into the cloud).
+  - collection allows to specified fields which every item in this collection will have. There are fixed fields: id, name, tags. And on the collection level user can select several of the following: 3 integer fields, 3 string fields, 3 multiline text fields, 3 boolean checkboxes, 3 date fields). For all selected custom fields user specifies its name.
   For example, I want to store a book collection. I can select (add to standard set of id+name+tags) additional string field “Author”, additional text field “Synopsis”, addition data field “Publication Year”. All fields should be rendered on the item page as well as on the collection page in the list of items (OK, not all of them, let’s say strings and dates).
 - All items have tags (user can enter several tags; it’s necessary to support autocompletion — when user starts text entering, you have to display dropdown with tags starting with entered letter already stored in database).
 - Main page contains:
