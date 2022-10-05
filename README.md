@@ -16,12 +16,12 @@
   For example, I want to store a book collection. I can select (add to standard set of id+name+tags) additional string field “Author”, additional text field “Synopsis”, addition data field “Publication Year”. All fields should be rendered on the item page as well as on the collection page in the list of items (OK, not all of them, let’s say strings and dates).
 - All items have tags (user can enter several tags; it’s necessary to support autocompletion — when user starts text entering, you have to display dropdown with tags starting with entered letter already stored in database).
 - Main page contains:
-  list of the latest items (name, collections, authors);
-  list of the top 5 largest collections;
-  tag cloud (when the user clicks on the tag you display the list of items — in general you should use “search results page” for it).
+  - list of the latest items (name, collections, authors);
+  - list of the top 5 largest collections;
+  - tag cloud (when the user clicks on the tag you display the list of items — in general you should use “search results page” for it).
   When item is opened for view (by author or another user) there are comments list at the bottom. Comments are linear, added to the end (it’s impossible to insert comment to previous comment). Comments have to be updated automatically — when item page is opened and somebody add a comment to it, it should be inserted (it’s possible to have a 2-5 second delay).
   Every item also can have likes (no more than one from one user per given item).
-  Site should support two languages: English and any other — Polish, Uzbek, Georgian (user select one and the choice is saved). Site should support two visual themes (skins): light and dark (user select one and the choice is saved).
+ - Site should support two languages: English and any other — Polish, Uzbek, Georgian (user select one and the choice is saved). Site should support two visual themes (skins): light and dark (user select one and the choice is saved).
   It’s required:
 - CSS-framework
 - to support different screen resolutions
