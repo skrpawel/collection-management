@@ -2,9 +2,9 @@ import Icon from '../assets/logo.jpeg'
 
 const Navbar = () => {
     return (
-        <nav className="flex justify-between space-x-4 p-8">
-            <img src={Icon} className='w-6' alt='logo' />
-            <div>
+        <nav className="flex justify-between items-center space-x-4 p-8">
+            <div className='flex'>
+                <img src={Icon} className='w-10 self-start mr-8' alt='logo' />
                 {[
                     ['Home', '/dashboard'],
                     ['Team', '/team'],
