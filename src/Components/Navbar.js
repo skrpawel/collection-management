@@ -8,7 +8,7 @@ const Navbar = () => {
                 {[
                     ['Home', '/dashboard'],
                     ['Team', '/team'],
-                    ['Projects', '/projects'],
+                    ['Posts', '/posts'],
                     ['Reports', '/reports'],
                 ].map(([title, url]) => (
                     <a href={url} className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{title}</a>

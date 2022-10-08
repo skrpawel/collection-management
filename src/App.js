@@ -1,14 +1,30 @@
 import './App.css';
+import React, { useEffect } from 'react';
 import Latest from './Components/Latest';
 import Navbar from './Components/Navbar';
+import Login from './Components/Login';
+import { useDispatch } from 'react-redux';
+import { getPosts } from './actions/posts'
+import Form from './Components/Form';
+import Register from './Components/Register';
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Navbar />
       <div className='flex flex-col items-center gap-12'>
         <Latest title='latest posts' />
         <Latest title='top 5 posts' />
+        <Login text="Don't have a account?" link="Register" />
+        <Login text='Already a user?' link='Login' />
+        <Form />
       </div>
     </div>
   );
