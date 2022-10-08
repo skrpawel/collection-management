@@ -14,7 +14,7 @@ const Login = (props) => {
                     <label htmlFor="inputPassword" className="form-label inline-block mb-2 text-white">Password</label>
                     <Input type='password' placeholder='Password' id='inputPassword' />
                 </div>
-                <Button />
+                <Button color="fdb422">Submit</Button>
                 <p className="text-white mt-6 text-center">{props.text} <a href="#!"
                     className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">{props.link}</a>
                 </p>

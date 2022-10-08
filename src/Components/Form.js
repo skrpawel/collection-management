@@ -24,7 +24,7 @@ const Form = () => {
             <Input value={postData.topic} type='text' placeholder='topic' id='input-topic' onChange={(e) => setPostData({ ...postData, topic: e.target.value })} />
             <Input value={postData.tags} type='text' placeholder='tags' id='input-tags' onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
             <InputFile />
-            <Button />
+            <Button color='fdb422'>Add post</Button>
         </form>
 
     );

@@ -4,9 +4,9 @@ const Latest = (props) => {
 
     const posts = useSelector(state => state.posts);
 
-    return (<div className=''>
-        <h1 className='text-white pb-10 text-xl text-left font-bold uppercase'>{props.title}</h1>
-        <div className='flex justify-center gap-16 border-t-2 border-white pt-8'>
+    return (<div className='min-w-full max-w-lg'>
+        <h1 className='text-white py-5 text-xl text-left font-bold uppercase border-t-2 border-white'>{props.title}</h1>
+        <div className='flex flex-wrap justify-center items-center gap-8 pt-8'>
             <ImageContainer />
             <ImageContainer />
             <ImageContainer />

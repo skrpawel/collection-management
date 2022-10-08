@@ -6,7 +6,7 @@ import Login from './Components/Login';
 import { useDispatch } from 'react-redux';
 import { getPosts } from './actions/posts'
 import Form from './Components/Form';
-import Register from './Components/Register';
+import AdminPanel from './Components/AdminPanel.js';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className="App p-8">
       <Navbar />
       <div className='flex flex-col items-center gap-12'>
         <Latest title='latest posts' />
@@ -25,6 +25,7 @@ function App() {
         <Login text="Don't have a account?" link="Register" />
         <Login text='Already a user?' link='Login' />
         <Form />
+        <AdminPanel />
       </div>
     </div>
   );
