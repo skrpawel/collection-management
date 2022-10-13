@@ -3,7 +3,7 @@ import Input from "./Input";
 
 const Login = (props) => {
     return (
-        <div className="block p-6 rounded-lg shadow-lg bg-transparent border-2 w-96">
+        <div className="block p-6 rounded-lg shadow-lg bg-transparent border-2 w-80 sm:w-96">
             <form>
                 <div className="form-group mb-6">
                     <label htmlFor="inputEmail" className="form-label inline-block mb-2 text-white">Email address</label>

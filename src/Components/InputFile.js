@@ -1,6 +1,6 @@
 const InputFile = (props) => {
     return (
-        <div class="mb-3 w-96">
+        <div class="mb-3">
             <input class="form-control
     block
     w-full

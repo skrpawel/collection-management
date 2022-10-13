@@ -23,10 +23,9 @@ const Navbar = () => {
             <div className='hidden sm:flex'>
                 <img src={Icon} className='w-10 self-start mr-8' alt='logo' />
                 {[
-                    ['Home', '/dashboard'],
-                    ['Team', '/team'],
+                    ['Home', '/home'],
                     ['Posts', '/posts'],
-                    ['Reports', '/reports'],
+                    ['Dashboard', '/dashboard'],
                 ].map(([title, url]) => (
                     <a href={url} className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{title}</a>
                 ))}

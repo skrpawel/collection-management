@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { getPosts } from './actions/posts'
 import Form from './Components/Form';
 import AdminPanel from './Components/AdminPanel.js';
+import Tags from './Components/Tags/Tags';
 
 
 function App() {
@@ -22,10 +23,11 @@ function App() {
       <div className='flex flex-col items-center gap-12'>
         <Latest title='latest posts' />
         <Latest title='top 5 posts' />
-        <Login text="Don't have a account?" link="Register" />
+        <Tags title='tag cloud' />
+        {/* <Login text="Don't have a account?" link="Register" />
         <Login text='Already a user?' link='Login' />
         <Form />
-        <AdminPanel />
+        <AdminPanel /> */}
       </div>
     </div>
   );
