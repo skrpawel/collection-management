@@ -23,7 +23,7 @@ const Navbar = () => {
             <div className='hidden sm:flex'>
                 <img src={Icon} className='w-10 self-start mr-8' alt='logo' />
                 {[
-                    ['Home', '/home'],
+                    ['Home', '/'],
                     ['Posts', '/posts'],
                     ['Dashboard', '/dashboard'],
                 ].map(([title, url]) => (

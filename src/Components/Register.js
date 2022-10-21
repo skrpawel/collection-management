@@ -15,7 +15,7 @@ const Login = () => {
                     <Input type='password' placeholder='Password' id='inputPassword' />
                 </div>
 
-                <Button />
+                <Button>Register</Button>
                 <p className="text-white mt-6 text-center">Already a member? <a href="#!"
                     className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Login</a>
                 </p>

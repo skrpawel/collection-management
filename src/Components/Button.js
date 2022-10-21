@@ -3,12 +3,12 @@ const def = '782012';
 
 const Button = (props) => {
 
-    return (
-        < button type="submit" className={`w-full
+  return (
+    < button type="submit" className={`w-full
     full
     px-6
     py-2.5
-    bg-[#${props.color}]
+    bg-[#fdb422]
   text-white
     font-medium
     text-xs
@@ -24,7 +24,7 @@ const Button = (props) => {
     active:transition 
     duration-150
     ease-in-out`} id={props.id} onClick={props.onClick} > {props.children}</button>
-    );
+  );
 }
 
 export default Button;

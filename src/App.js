@@ -8,6 +8,12 @@ import { getPosts } from './actions/posts'
 import Form from './Components/Form';
 import AdminPanel from './Components/AdminPanel.js';
 import Tags from './Components/Tags/Tags';
+import Register from './Components/Register'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 function App() {
@@ -21,9 +27,20 @@ function App() {
     <div className="App p-8">
       <Navbar />
       <div className='flex flex-col items-center gap-12'>
-        <Latest title='latest posts' />
-        <Latest title='top 5 posts' />
-        <Tags title='tag cloud' />
+
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<>
+              <Latest title='latest posts' />
+              <Latest title='top 5 posts' />
+              <Tags title='tag cloud' />
+            </>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Register />} />
+            <Route path="/dashboard" element={<AdminPanel />} />
+          </Routes>
+        </BrowserRouter>
         {/* <Login text="Don't have a account?" link="Register" />
         <Login text='Already a user?' link='Login' />
         <Form />
