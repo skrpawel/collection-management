@@ -5,7 +5,6 @@ import Navbar from './Components/Navbar';
 import Login from './Components/Login';
 import { useDispatch } from 'react-redux';
 import { getPosts } from './actions/posts'
-import Form from './Components/Form';
 import AdminPanel from './Components/AdminPanel.js';
 import Tags from './Components/Tags/Tags';
 import Register from './Components/Register'

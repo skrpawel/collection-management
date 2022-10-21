@@ -1,6 +1,3 @@
-
-const def = '782012';
-
 const Button = (props) => {
 
   return (

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Icon from '../assets/logo.jpeg'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 
@@ -6,11 +6,11 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 const Navbar = () => {
 
 
-    const ref = useRef(null);
+    // const ref = useRef(null);
 
-    const handleClick = () => {
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
-    };
+    // // const handleClick = () => {
+    // //     ref.current?.scrollIntoView({ behavior: 'smooth' });
+    // // };
 
     const [nav, setNav] = useState(true);
 

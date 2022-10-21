@@ -36,31 +36,31 @@ const AdminPanel = () => {
         }
     };
 
-    const deleteUser = () => {
-        axios.post(`${url}/deleteUser`, {
-            checkedUsers: isCheck,
-        }).then((response) => {
-            alert("User deleted");
-            logoutUser();
-        });
-    };
+    // const deleteUser = () => {
+    //     axios.post(`${url}/deleteUser`, {
+    //         checkedUsers: isCheck,
+    //     }).then((response) => {
+    //         alert("User deleted");
+    //         logoutUser();
+    //     });
+    // };
 
-    const blockUser = () => {
-        axios.post(`${url}/blockUser`, {
-            checkedUsers: isCheck,
-        }).then((response) => {
-            alert("User blocked");
-            logoutUser();
-        });
-    };
+    // const blockUser = () => {
+    //     axios.post(`${url}/blockUser`, {
+    //         checkedUsers: isCheck,
+    //     }).then((response) => {
+    //         alert("User blocked");
+    //         logoutUser();
+    //     });
+    // };
 
-    const unblockUser = () => {
-        axios.post(`${url}/unblockUser`, {
-            checkedUsers: isCheck,
-        }).then((response) => {
-            alert("User active");
-        });
-    };
+    // const unblockUser = () => {
+    //     axios.post(`${url}/unblockUser`, {
+    //         checkedUsers: isCheck,
+    //     }).then((response) => {
+    //         alert("User active");
+    //     });
+    // };
 
     useEffect(() => {
         axios.get(`${url}/admin_panel`).then(res => {
@@ -68,23 +68,21 @@ const AdminPanel = () => {
         })
     }, []);
 
-    const logoutUser = () => {
-        const currentUserMail = getCurrentUser();
+    // const logoutUser = () => {
+    //     const currentUserMail = getCurrentUser();
 
-        users.forEach(function (user, index, array) {
+    //     users.forEach(function (user, index, array) {
 
-            if (Object.values(isCheck).includes(user._id) && user.email === currentUserMail) {
-                localStorage.clear();
-            }
-        });
+    //         if (Object.values(isCheck).includes(user._id) && user.email === currentUserMail) {
+    //             localStorage.clear();
+    //         }
+    //     });
+    // }
 
-
-    }
-
-    const getCurrentUser = () => {
-        const mail = localStorage.getItem('_id');
-        return mail;
-    }
+    // const getCurrentUser = () => {
+    //     const mail = localStorage.getItem('_id');
+    //     return mail;
+    // }
 
     return (
         <div className="flex flex-col">
