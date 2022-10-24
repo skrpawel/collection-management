@@ -15,6 +15,7 @@ const Input = (props) => {
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id={props.id}
             onChange={props.onChange}
+            name={props.name}
             placeholder={props.placeholder} />
     );
 }

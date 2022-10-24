@@ -3,8 +3,6 @@ import React, { useEffect } from 'react';
 import Latest from './Components/Latest';
 import Navbar from './Components/Navbar';
 import Login from './Components/Login';
-import { useDispatch } from 'react-redux';
-import { getPosts } from './actions/posts'
 import AdminPanel from './Components/AdminPanel.js';
 import Tags from './Components/Tags/Tags';
 import Register from './Components/Register'
@@ -13,14 +11,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Posts from './Components/Posts';
 
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
 
   return (
     <div className="App p-8">
@@ -38,6 +32,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/dashboard" element={<AdminPanel />} />
+            <Route path="/posts" element={<Posts />} />
           </Routes>
         </BrowserRouter>
         {/* <Login text="Don't have a account?" link="Register" />
