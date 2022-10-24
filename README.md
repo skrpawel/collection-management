@@ -25,7 +25,7 @@
     Every item also can have likes (no more than one from one user per given item).
 - Site should support two languages: English and any other — Polish, Uzbek, Georgian (user select one and the choice is saved). Site should support two visual themes (skins): light and dark (user select one and the choice is saved).
   It’s required:
-- CSS-framework
+- CSS-framework [x] 
 - to support different screen resolutions
 - to use ORM/ODM/... to access data (sequelize, prism, typeorm, anything you like),
 - To use full-text search engine (either external library or using native database features) — use can’t perform full database scan with SELECTs.
