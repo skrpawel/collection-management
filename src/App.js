@@ -12,6 +12,7 @@ import {
   Route,
 } from "react-router-dom";
 import Posts from './Components/Posts';
+import ManageCollection from './Components/ManageCollection';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/signup" element={<Register />} />
             <Route path="/dashboard" element={<AdminPanel />} />
             <Route path="/posts" element={<Posts />} />
+            <Route path="/edit_collection" element={<ManageCollection />} />
           </Routes>
         </BrowserRouter>
         {/* <Login text="Don't have a account?" link="Register" />

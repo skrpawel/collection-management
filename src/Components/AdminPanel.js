@@ -5,9 +5,6 @@ import { CgLockUnlock } from 'react-icons/cg';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import Button from "./Button";
 
-const url = 'https://task-4-itranistion-backend.herokuapp.com'
-// const url = 'http://localhost:5001'
-
 //TODO
 // Redirect to '/' after current logged user is deleted or blocked 
 
@@ -22,19 +19,26 @@ const AdminPanel = () => {
 
     const handleSelectAll = e => {
         setIsCheckAll(!isCheckAll);
-        setIsCheck(users.map(li => li._id));
+        setIsCheck(users.map(li => li.id));
         if (isCheckAll) {
             setIsCheck([]);
         }
+
+        console.log(isCheck)
     };
 
     const handleChange = e => {
         const { id, checked } = e.target;
-        setIsCheck([...isCheck, id]);
+
+        setIsCheck([...isCheck, parseInt(id)]);
+
         if (!checked) {
-            setIsCheck(isCheck.filter(item => item !== id));
+            return setIsCheck(isCheck.filter(item => item !== parseInt(id)));
         }
     };
+
+    console.log(isCheck)
+
 
     // const deleteUser = () => {
     //     axios.post(`${url}/deleteUser`, {
@@ -63,29 +67,19 @@ const AdminPanel = () => {
     // };
 
     useEffect(() => {
-        axios.get(`${url}/admin_panel`).then(res => {
-            setUsers(res.data);
-        })
-    }, []);
-
-    // const logoutUser = () => {
-    //     const currentUserMail = getCurrentUser();
-
-    //     users.forEach(function (user, index, array) {
-
-    //         if (Object.values(isCheck).includes(user._id) && user.email === currentUserMail) {
-    //             localStorage.clear();
-    //         }
-    //     });
-    // }
-
-    // const getCurrentUser = () => {
-    //     const mail = localStorage.getItem('_id');
-    //     return mail;
-    // }
+        const fetchData = async () => {
+            try {
+                const res = await axios.get('http://localhost:5001/api/user');
+                setUsers(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
+    }, [])
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full">
             <div className="flex" role="group" aria-label="Send">
                 <Button color='782012' />
                 <Button color='228022'>{<CgLockUnlock />}</Button>
@@ -94,43 +88,40 @@ const AdminPanel = () => {
 
 
             <div className="w-full">
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className="w-full text-xs md:text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr className="">
                             <th scope="col">
                                 <input
                                     type='checkbox'
                                     name='select_all'
-                                    onClick={handleSelectAll}
-                                    isChecked={isCheckAll}
+                                    onChange={handleSelectAll}
+                                    checked={isCheckAll}
                                 /></th>
                             <th scope="col">ID</th>
                             <th scope="col">name</th>
                             <th scope="col">e-mail</th>
-                            <th scope="col">last login time</th>
-                            <th scope="col">registration time</th>
-                            <th scope="col">status</th>
+                            <th scope="col">type</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         {users.map(user => {
                             return (
-                                <tr key={user._id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                                <tr key={user.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
                                     <th scope="row">
                                         <input
                                             type='checkbox'
                                             name={user.email}
-                                            id={user._id}
-                                            checked={isCheck.includes(user._id)}
+                                            id={user.id}
+                                            checked={isCheck.includes(user.id)}
                                             onChange={handleChange}
                                         />
                                     </th>
-                                    <th>{user._id}</th>
+                                    <th>{user.id}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.login_date}</td>
-                                    <td>{user.registration_date}</td>
-                                    <td>{user.status}</td>
+                                    <td>{user.type}</td>
                                 </tr>
                             );
                         })}

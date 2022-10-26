@@ -25,7 +25,11 @@ const Navbar = () => {
                 ].map(([title, url]) => (
                     <a href={url} className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{title}</a>
                 ))}
-                {currentUser && <a href='/add_post' className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">Add post</a>}
+                {currentUser &&
+                    <>
+                        <a href='/add_post' className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">Add post</a>
+                        <a href='/edit_collection' className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">Your collection</a>
+                    </>}
             </div>
             <div onClick={handleNav} className='block sm:hidden'>
                 {!nav ? <AiOutlineClose size={20} color='white' /> : <AiOutlineMenu size={20} color='white' />}
