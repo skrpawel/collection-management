@@ -12,7 +12,9 @@
 
 Every collection contains:
 - [x] name
-- [ ] description (with markdown formatting support), topic (one value from the predefined list, for example, “Books”, “Signs”, “Silverware”), optional image (uploaded by the users into the cloud).
+- [x] description (with markdown formatting support)
+- [x] topic (one value from the predefined list, for example, “Books”, “Signs”, “Silverware”)
+- [ ] optional image (uploaded by the users into the cloud).
 - [ ] collection allows to specified fields which every item in this collection will have. There are fixed fields: id, name, tags. And on the collection level user can select several of the following: 3 integer fields, 3 string fields, 3 multiline text fields, 3 boolean checkboxes, 3 date fields). For all selected custom fields user specifies its name. For example, I want to store a book collection. I can select (add to standard set of id+name+tags) additional string field “Author”, additional text field “Synopsis”, addition data field “Publication Year”. All fields should be rendered on the item page as well as on the collection page in the list of items (OK, not all of them, let’s say strings and dates).
 - [ ] All items have tags (user can enter several tags; it’s necessary to support autocompletion — when user starts text entering, you have to display dropdown with tags starting with entered letter already stored in database).
 - Main page contains:
