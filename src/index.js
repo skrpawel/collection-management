@@ -9,6 +9,7 @@ import { AuthContextProvider } from './context/AuthContext';
 // import reducers from './reducers'
 
 // const store = createStore(reducers, compose(applyMiddleware(thunk)))
+import './i18n';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,15 +1,16 @@
 import { AuthContext } from '../context/AuthContext';
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from './Button';
-import Input from "./Input";
-import MDEditor from '@uiw/react-md-editor';
-import Select from 'react-select'
+
+import CollectionForm from './CollectionForm';
+import { Link } from 'react-router-dom';
 
 
 
 
 const ManageCollection = () => {
+
+    const URL = 'https://itransistion-project-be.herokuapp.com/'
 
     const { currentUser } = useContext(AuthContext);
 
@@ -24,72 +25,70 @@ const ManageCollection = () => {
     const [posts, setPosts] = useState([]);
 
     const options = [
-        { value: 'shoes', label: 'Shoes' },
-        { value: 'whiskey', label: 'Whiskey' },
-        { value: 'books', label: 'Books' }
+        { value: 'shoes', label: 'shoes' },
+        { value: 'whiskey', label: 'whiskey' },
+        { value: 'books', label: 'books' }
     ];
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const inputs = {
+
+        const obj = {
+            name,
             description,
             topic,
-            img
-        };
+            img,
+            userID
+        }
 
         try {
-            await axios.post('http://localhost:5001/api/posts', { name, description, topic, img, userID });
+            const res = await axios.post('http://localhost:5001/api/posts', obj);
+            console.log(res);
         } catch (err) {
-            console.log(err);
+            return err;
         }
     }
 
+    const handleDelete = async (e, id) => {
+        e.preventDefault();
+        try {
+            await axios.delete('http://localhost:5001/api/posts/' + id, { withCredentials: true });
+        } catch (err) {
+            return err;
+        }
+
+        setPosts(posts.filter(post => post.idcollections !== id))
+    }
 
     useEffect(() => {
-        console.log(currentUser.id);
 
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5001/api/posts');
-                console.log(res.data)
+                const res = await axios.post(`${URL}/api/posts/test`, { id: userID }, { withCredentials: true });
                 setPosts(res.data);
+
             } catch (err) {
-                console.log(err);
+                return err;
             }
         }
         fetchData();
-    }, [])
+    }, [userID])
 
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group mb-6">
-                    <label htmlFor="inputName" className="form-label inline-block mb-2 text-white">Name of collection</label>
-                    <Input type='text' placeholder='Enter name of collection' id='inputName' value={name} onChange={(e) => setName(e.target.value)} />
-                </div>
-                <div className="form-group mb-6">
-                    <MDEditor
-                        value={description}
-                        onChange={setDescription}
-                    />
-                </div>
-                <div className="form-group mb-6">
-                    <label htmlFor="inputTopic" className="form-label inline-block mb-2 text-white">Topic</label>
-                    <Select options={options} onChange={(e) => setTopic(e.value)} />
-                </div>
-
-                <div className="form-group mb-6">
-                    <label htmlFor="inputImg" className="form-label inline-block mb-2 text-white">Select image</label>
-                    <Input type='file' placeholder='Image' id='inputImg' name='img' onChange={setImg} />
-                </div>
-
-                <Button type='submit'>Create new collection</Button>
-
-                <p className="text-white mt-6 text-center">{''} <a href="#!"
-                    className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">{''}</a>
-                </p>
-            </form>
+            <CollectionForm
+                handleSubmit={handleSubmit}
+                nameValue={name}
+                nameChange={(e) => setName(e.target.value)}
+                descriptionValue={description}
+                descriptionChange={setDescription}
+                selectOptions={options}
+                selectValue={topic}
+                selectChange={(e) => setTopic(e.value)}
+                imgChange={setImg}
+                buttonText={'Create new collection'}
+            />
             <div className='my-4'>
 
             </div>
@@ -120,26 +119,30 @@ const ManageCollection = () => {
                 <tbody className='divide-y divide-gray-50'>
                     {posts.map(post => {
                         return (
-                            <tr key={post.id} className='bg-white'>
-                                <td className='px-6 py-4'>{post.id}</td>
+                            <tr key={post.idcollections} className='bg-white'>
+                                <td className='px-6 py-4'>{post.idcollections}</td>
                                 <td className='px-6 py-4'>{post.name}</td>
                                 <td className='px-6 py-4'>{post.description}</td>
                                 <td className='px-6 py-4'>{post.topic}</td>
                                 <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                    <a
-                                        className="text-green-500 hover:text-green-700"
-                                        href="#"
-                                    >
-                                        Edit
-                                    </a>
+                                    <Link to={`/edit_collection?${post.idcollections}`} state={post} options={options}>
+
+                                        <li
+                                            id={'edit_' + post.idcollections}
+                                            className="text-green-500 hover:text-green-700"
+
+                                        >
+                                            Edit
+                                        </li>
+                                    </Link>
                                 </td>
                                 <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                    <a
+                                    <li
+                                        onClick={(e) => handleDelete(e, post.idcollections)}
                                         className="text-red-500 hover:text-red-700"
-                                        href="#"
                                     >
                                         Delete
-                                    </a>
+                                    </li>
                                 </td>
                             </tr>
                         );

@@ -1,15 +1,14 @@
-import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import { useNavigate } from 'react-router-dom';
-import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { useTranslation } from 'react-i18next';
 
 
 const Login = (props) => {
     const navigate = useNavigate()
-
+    const { i18n } = useTranslation();
     const { login } = useContext(AuthContext);
 
     const [inputs, setInputs] = useState({
@@ -31,6 +30,8 @@ const Login = (props) => {
         } catch (err) {
             setErr(err.response.data);
         }
+
+        i18n.changeLanguage('en')
     }
 
 
@@ -40,7 +41,6 @@ const Login = (props) => {
                 <div className="form-group mb-6">
                     <label htmlFor="inputEmail" className="form-label inline-block mb-2 text-white">Email address</label>
                     <Input type='email' placeholder='Enter email' id='inputEmail' name='email' onChange={handleChange} />
-
                 </div>
                 <div className="form-group mb-6">
                     <label htmlFor="inputPassword" className="form-label inline-block mb-2 text-white">Password</label>

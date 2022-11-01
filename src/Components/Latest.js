@@ -4,18 +4,28 @@ import { useState } from "react";
 import ImageContainer from "./ImageContainer";
 // import { useSelector } from 'react-redux';
 const Latest = (props) => {
-
+    const URL = 'https://itransistion-project-be.herokuapp.com'
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5001/api/posts');
+                const res = await axios.get(`${URL}/api/posts`);
                 setPosts(res.data);
             } catch (err) {
-                console.log(err);
+                console.log('blad', err);
             }
         }
+
+        const fetch = async () => {
+            try {
+                const res = await axios.get(`${URL}/api/posts`);
+                console.log(res.data);
+            } catch (err) {
+                // console.log('blad', err);
+            }
+        }
+        fetch();
         fetchData();
     }, [])
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'http://localhost:5001/posts';
+const URL = 'https://itransistion-project-be.herokuapp.com/posts'
 
-export const fetchPosts = () => axios.get(url);
-export const createPost = (newPost) => axios.post(url, newPost);
+export const fetchPosts = () => axios.get(URL);
+export const createPost = (newPost) => axios.post(URL, newPost);

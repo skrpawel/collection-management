@@ -21,7 +21,7 @@ const Register = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5001/api/auth/register', inputs);
+            await axios.post('https://itransistion-project-be.herokuapp.com/api/auth/register', inputs);
             navigate('/login');
         } catch (err) {
             setErr(err.response.data);

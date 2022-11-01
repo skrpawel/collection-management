@@ -10,8 +10,8 @@ const Posts = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5001/api/posts');
-                setPosts(res.data);
+                const res = await axios.post('http://localhost:5001/api/posts/test', { elo: 9 });
+
             } catch (err) {
                 console.log(err);
             }
