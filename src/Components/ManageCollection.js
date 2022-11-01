@@ -42,7 +42,7 @@ const ManageCollection = () => {
         }
 
         try {
-            const res = await axios.post('http://localhost:5001/api/posts', obj);
+            const res = await axios.post(`${URL}/api/posts`, obj);
             console.log(res);
         } catch (err) {
             return err;
@@ -52,7 +52,7 @@ const ManageCollection = () => {
     const handleDelete = async (e, id) => {
         e.preventDefault();
         try {
-            await axios.delete('http://localhost:5001/api/posts/' + id, { withCredentials: true });
+            await axios.delete(`${URL}/api/posts` + id, { withCredentials: true });
         } catch (err) {
             return err;
         }
