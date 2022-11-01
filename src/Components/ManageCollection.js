@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const ManageCollection = () => {
 
-    const URL = 'https://itransistion-project-be.herokuapp.com/'
+    const URL = 'https://itransistion-project-be.herokuapp.com'
 
     const { currentUser } = useContext(AuthContext);
 
@@ -52,7 +52,7 @@ const ManageCollection = () => {
     const handleDelete = async (e, id) => {
         e.preventDefault();
         try {
-            await axios.delete(`${URL}/api/posts` + id, { withCredentials: true });
+            await axios.delete(`${URL}/api/posts/` + id, { withCredentials: true });
         } catch (err) {
             return err;
         }

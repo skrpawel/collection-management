@@ -14,9 +14,6 @@ import {
 import Posts from './Components/Posts';
 import ManageCollection from './Components/ManageCollection';
 import EditCollection from './Components/EditCollection';
-import logo from './logo.svg';
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 
 const lngs = {
   en: { nativeName: 'English' },
@@ -24,15 +21,11 @@ const lngs = {
 };
 
 function App() {
-  const { t, i18n } = useTranslation();
-
 
   return (
     <div className="App p-8">
       <Navbar />
       <div className='flex flex-col items-center gap-12'>
-
-
         <BrowserRouter>
           <Routes>
 

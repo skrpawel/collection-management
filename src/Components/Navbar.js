@@ -1,16 +1,11 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import Icon from '../assets/logo.jpeg'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { AuthContext } from '../context/AuthContext';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
-    const { t, i18n } = useTranslation();
-
-    const lngs = {
-        en: { nativeName: 'English' },
-        pl: { nativeName: 'Polish' }
-    };
+    const { t } = useTranslation();
 
 
     const [nav, setNav] = useState(true);
