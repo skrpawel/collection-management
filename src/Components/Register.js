@@ -5,6 +5,10 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+
+    // const URL = 'https://itransistion-project-be.herokuapp.com/api/auth/register';
+    const URL = 'http://localhost:5001/api/auth/register';
+
     const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         username: '',
@@ -21,7 +25,7 @@ const Register = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            await axios.post('https://itransistion-project-be.herokuapp.com/api/auth/register', inputs);
+            await axios.post(URL, inputs);
             navigate('/login');
         } catch (err) {
             setErr(err.response.data);

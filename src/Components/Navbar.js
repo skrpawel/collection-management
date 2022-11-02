@@ -22,16 +22,18 @@ const Navbar = () => {
                 <img src={Icon} className='w-10 self-start mr-8' alt='logo' />
                 {[
                     [t('navbar.part1'), '/'],
-                    [t('navbar.part2'), '/posts'],
-                    [t('navbar.part3'), '/dashboard'],
+                    [t('navbar.part2'), '/posts']
                 ].map(([title, url]) => (
-                    <a href={url} className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{title}</a>
+                    <a key={title} href={url} className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{title}</a>
                 ))}
                 {currentUser &&
                     <>
                         <a href='/add_post' className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{t('navbar.part4')}</a>
                         <a href='/collection' className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{t('navbar.part5')}</a>
                     </>}
+                {
+                    (currentUser) && (currentUser.type === 'admin') && <a href='/dashboard' className="rounded-lg px-3 py-2 text-[#fca311] font-medium hover:text-[#e5e5e5]">{t('navbar.part3')}</a>
+                }
             </div>
             <div onClick={handleNav} className='block sm:hidden'>
                 {!nav ? <AiOutlineClose size={20} color='white' /> : <AiOutlineMenu size={20} color='white' />}

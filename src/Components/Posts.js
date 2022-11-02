@@ -5,15 +5,18 @@ import ImageContainer from "./ImageContainer";
 
 const Posts = (props) => {
 
+    const URL = 'http://localhost:5001';
+    // const URL = 'https://itransistion-project-be.herokuapp.com';
+
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await axios.post('http://localhost:5001/api/posts/test', { elo: 9 });
-
+                const res = await axios.get(`${URL}/api/posts/`);
+                setPosts(res.data);
             } catch (err) {
-                console.log(err);
+                console.log('blad', err);
             }
         }
         fetchData();

@@ -10,14 +10,13 @@ import Select from 'react-select'
 const AdminPanel = () => {
 
     const [users, setUsers] = useState([]);
-    // const [isAcitve, setIsActive] = useState(true
-    const URL = 'https://itransistion-project-be.herokuapp.com/api/user'
+    // const URL = 'https://itransistion-project-be.herokuapp.com/api/user'
+    const URL = 'http://localhost:5001/api/user'
 
     const selectOptions = [
         { label: 'admin', value: 'admin' },
         { label: 'standard', value: 'standard' }
     ]
-    const selectChange = () => { }
 
     const deleteUser = async (id) => {
         try {
@@ -36,6 +35,18 @@ const AdminPanel = () => {
 
         try {
             await axios.post(`${URL}/${action}/${id}`, { id });
+        } catch (err) {
+            return err;
+        }
+    };
+
+    const changeUserPermission = async (e, id, currentUserType) => {
+        if (currentUserType === e.value) return null;
+
+        const typeOfAccount = e.value;
+
+        try {
+            await axios.put(`${URL}/privileges/${id}`, { typeOfAccount, id });
         } catch (err) {
             return err;
         }
@@ -69,7 +80,6 @@ const AdminPanel = () => {
                             <th scope="col">block</th>
                             <th scope="col">unblock</th>
                             <th scope="col">delete</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +101,7 @@ const AdminPanel = () => {
                                     <td>
                                         <Select
                                             options={selectOptions}
-                                            onChange={selectChange}
+                                            onChange={(e) => changeUserPermission(e, user.id, user.type)}
                                             defaultValue={{ label: user.type, value: user.type }} />
                                     </td>
                                     <td>{user.status}</td>

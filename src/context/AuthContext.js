@@ -2,7 +2,9 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react"
 
 
-const url = 'https://itransistion-project-be.herokuapp.com/api/auth'
+// const URL = 'https://itransistion-project-be.herokuapp.com/api/auth'
+
+const URL = 'http://localhost:5001/api/auth'
 
 export const AuthContext = createContext();
 
@@ -12,14 +14,14 @@ export const AuthContextProvider = ({ children }) => {
 
 
     const login = async inputs => {
-        const res = await axios.post(url + '/login', inputs, { withCredentials: true });
+        const res = await axios.post(URL + '/login', inputs, { withCredentials: true });
 
         setCurrentUser(res.data);
     }
 
     const logout = async () => {
         try {
-            await axios.post(url + '/logout', '', { withCredentials: true });
+            await axios.post(URL + '/logout', '', { withCredentials: true });
         } catch (err) {
             console.log(err);
         }

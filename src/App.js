@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import { React, useContext } from 'react';
 import Latest from './Components/Latest';
 import Navbar from './Components/Navbar';
 import Login from './Components/Login';
@@ -9,18 +9,21 @@ import Register from './Components/Register'
 import {
   BrowserRouter,
   Routes,
-  Route,
+  Route
 } from "react-router-dom";
 import Posts from './Components/Posts';
 import ManageCollection from './Components/ManageCollection';
 import EditCollection from './Components/EditCollection';
+import { AuthContext } from './context/AuthContext';
 
-const lngs = {
-  en: { nativeName: 'English' },
-  pl: { nativeName: 'Polish' }
-};
+// const lngs = {
+//   en: { nativeName: 'English' },
+//   pl: { nativeName: 'Polish' }
+// };
+
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <div className="App p-8">
@@ -28,27 +31,30 @@ function App() {
       <div className='flex flex-col items-center gap-12'>
         <BrowserRouter>
           <Routes>
-
             <Route path="/" element={<>
-              <Latest title='latest posts' />
+              <Latest title='latest posts' url='latest' />
               <Latest title='top 5 posts' />
               <Tags title='tag cloud' />
             </>} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Register />} />
-            <Route path="/dashboard" element={<AdminPanel />} />
+            {(currentUser) && (currentUser.type === 'admin') && <Route path="/dashboard" element={<AdminPanel />} />}
             <Route path="/posts" element={<Posts />} />
-            <Route path="/collection" element={<ManageCollection />} />
-            <Route path="/edit_collection" element={<EditCollection />} />
+            {currentUser && <>
+              <Route path="/collection" element={<ManageCollection />} />
+              <Route path="/edit_collection" element={<EditCollection />} />
+            </>}
           </Routes>
+
         </BrowserRouter>
-        {/* <Login text="Don't have a account?" link="Register" />
-        <Login text='Already a user?' link='Login' />
-        <Form />
-        <AdminPanel /> */}
       </div>
     </div>
   );
 }
 
+
+
 export default App;
+
+
+// export default App;

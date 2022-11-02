@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
 
 const ManageCollection = () => {
 
-    const URL = 'https://itransistion-project-be.herokuapp.com'
+    // const URL = 'https://itransistion-project-be.herokuapp.com'
+    const URL = 'http://localhost:5001'
 
     const { currentUser } = useContext(AuthContext);
 
@@ -42,8 +43,7 @@ const ManageCollection = () => {
         }
 
         try {
-            const res = await axios.post(`${URL}/api/posts`, obj);
-            console.log(res);
+            await axios.post(`${URL}/api/posts`, obj);
         } catch (err) {
             return err;
         }
@@ -63,8 +63,15 @@ const ManageCollection = () => {
     useEffect(() => {
 
         const fetchData = async () => {
+            let url = ''
+
+            if (currentUser.type === 'standard') {
+                url = `own${userID}`
+            }
+
             try {
-                const res = await axios.post(`${URL}/api/posts/test`, { id: userID }, { withCredentials: true });
+                const res = await axios.get(`${URL}/api/posts/${url}`, { withCredentials: true });
+                // const res = await axios.post(`${URL}/api/posts/test`, { id: userID }, { withCredentials: true });
                 setPosts(res.data);
 
             } catch (err) {
@@ -72,7 +79,7 @@ const ManageCollection = () => {
             }
         }
         fetchData();
-    }, [userID])
+    }, [userID, currentUser.type])
 
 
     return (

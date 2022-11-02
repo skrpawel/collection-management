@@ -1,11 +1,11 @@
 ## Requirements
 
-- [ ] Non-authenticated users have read-only access
-- [ ] Authenticated not-admins have access to everything except admin-page.
-- [ ] Admin-page allow user management — view; block; unblock; delete; add to admins; remove from admins.
-- [ ] ADMIN IS ABLE TO REMOVE ADMIN ACCESS FROM ITSELF
-- [ ] Admin see all pages as their author (for example, admin can open collection of other user and add an item it it; so, admin is virtually owner of every collection and every item).
-- [ ] Only admin or creator of the collections or items can manage them (edit; add; delete). Everything is accessible for viewing for everyone (except admin page).
+- [x] Non-authenticated users have read-only access
+- [x] Authenticated not-admins have access to everything except admin-page.
+- [x] Admin-page allow user management — view; block; unblock; delete; add to admins; remove from admins.
+- [x] ADMIN IS ABLE TO REMOVE ADMIN ACCESS FROM ITSELF
+- [x] Admin see all pages as their author (for example, admin can open collection of other user and add an item it it; so, admin is virtually owner of every collection and every item).
+- [x] Only admin or creator of the collections or items can manage them (edit; add; delete). Everything is accessible for viewing for everyone (except admin page).
 - [x] Users can register and authenticate via site forms.
 - [ ] Every pages (in the top header) provides an access to the full-text search. Search results are always items (e.g. if text is found in comment text, search result have to display link to the item with comments, not to the comment itself). If result is a collection you can either display any item or generate link to the collection.
 - [ ] Every user has its personal page where they can mange list of collections (create new, delete, or edit) — each collection in the list is a link to the collection page that contains table of items with sorting/filtering and capabilities to create new item, edit or delete existing item).
@@ -20,17 +20,20 @@ Every collection contains:
 - [ ] All items have tags (user can enter several tags; it’s necessary to support autocompletion — when user starts text entering, you have to display dropdown with tags starting with entered letter already stored in database).
 
 - Main page contains:
+
   [x] list of the latest items (name, collections, authors);
   [x] list of the top 5 largest collections;
   [ ] tag cloud (when the user clicks on the tag you display the list of items — in general you should use “search results page” for it).
-  When item is opened for view (by author or another user):
+
+- When item is opened for view (by author or another user):
   [ ] there are comments list at the bottom. Comments are linear, added to the end (it’s impossible to insert comment to previous comment).
   [ ] Comments have to be updated automatically — when item page is opened and somebody add a comment to it, it should be inserted (it’s possible to have a 2-5 second delay).
   [ ] Every item also can have likes (no more than one from one user per given item).
 - [ ] Site should support two languages: English and any other (user select one and the choice is saved).
 - [ ] Site should support two visual themes (skins): light and dark (user select one and the choice is saved).
-      It’s required:
+- It’s required:
+
 - [x] CSS-framework
-- [ ] to support different screen resolutions
+- [x] to support different screen resolutions
 - [ ] to use ORM/ODM/... to access data (sequelize, prism, typeorm, anything you like),
 - [ ] To use full-text search engine (either external library or using native database features) — use can’t perform full database scan with SELECTs.
