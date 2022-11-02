@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 
 const ManageCollection = () => {
 
-    // const URL = 'https://itransistion-project-be.herokuapp.com'
-    const URL = 'http://localhost:5001'
+    const URL = 'https://itransistion-project-be.herokuapp.com'
+    // const URL = 'http://localhost:5001'
 
     const { currentUser } = useContext(AuthContext);
 

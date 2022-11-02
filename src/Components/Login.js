@@ -3,12 +3,11 @@ import Button from "./Button";
 import Input from "./Input";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
-import { useTranslation } from 'react-i18next';
+
 
 
 const Login = (props) => {
     const navigate = useNavigate()
-    const { i18n } = useTranslation();
     const { login } = useContext(AuthContext);
 
     const [inputs, setInputs] = useState({
@@ -31,7 +30,6 @@ const Login = (props) => {
             setErr(err.response.data);
         }
 
-        i18n.changeLanguage('en')
     }
 
 

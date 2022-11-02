@@ -10,8 +10,8 @@ import Select from 'react-select'
 const AdminPanel = () => {
 
     const [users, setUsers] = useState([]);
-    // const URL = 'https://itransistion-project-be.herokuapp.com/api/user'
-    const URL = 'http://localhost:5001/api/user'
+    const URL = 'https://itransistion-project-be.herokuapp.com/api/user'
+    // const URL = 'http://localhost:5001/api/user'
 
     const selectOptions = [
         { label: 'admin', value: 'admin' },

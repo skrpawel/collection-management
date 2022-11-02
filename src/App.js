@@ -33,7 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element={<>
               <Latest title='latest posts' url='latest' />
-              <Latest title='top 5 posts' />
+              <Latest title='top 5 posts' url='latest' />
               <Tags title='tag cloud' />
             </>} />
             <Route path="/login" element={<Login />} />

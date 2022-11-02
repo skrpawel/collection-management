@@ -4,8 +4,8 @@ import { useState } from "react";
 import ImageContainer from "./ImageContainer";
 // import { useSelector } from 'react-redux';
 const Latest = (props) => {
-    // const URL = 'https://itransistion-project-be.herokuapp.com';
-    const URL = 'http://localhost:5001'
+    const URL = 'https://itransistion-project-be.herokuapp.com';
+    // const URL = 'http://localhost:5001'
 
     const [latestPosts, setLatestPosts] = useState([]);
 
@@ -20,7 +20,7 @@ const Latest = (props) => {
         }
 
         fetchData();
-    }, [latestPosts, props.url])
+    }, [props.url])
 
 
     return (<div className='min-w-full max-w-lg'>
@@ -28,7 +28,7 @@ const Latest = (props) => {
         <div className='flex flex-wrap justify-center items-center gap-8 pt-8'>
             {
                 latestPosts.map(post => {
-                    return <ImageContainer key={post.id + post.name} name={post.name} collection={post.topic} author={post.author} img={post.img} />
+                    return <ImageContainer key={post.idcollections + post.name} name={post.name} collection={post.topic} author={post.author} img={post.img} />
                 })
             }
         </div>

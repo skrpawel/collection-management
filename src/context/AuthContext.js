@@ -2,9 +2,9 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react"
 
 
-// const URL = 'https://itransistion-project-be.herokuapp.com/api/auth'
+const URL = 'https://itransistion-project-be.herokuapp.com/api/auth'
 
-const URL = 'http://localhost:5001/api/auth'
+// const URL = 'http://localhost:5001/api/auth'
 
 export const AuthContext = createContext();
 
@@ -14,8 +14,9 @@ export const AuthContextProvider = ({ children }) => {
 
 
     const login = async inputs => {
-        const res = await axios.post(URL + '/login', inputs, { withCredentials: true });
+        console.log('Hello', inputs);
 
+        const res = await axios.post(URL + '/login', inputs, { withCredentials: true });
         setCurrentUser(res.data);
     }
 
@@ -25,9 +26,8 @@ export const AuthContextProvider = ({ children }) => {
         } catch (err) {
             console.log(err);
         }
-        setCurrentUser(null);
-        localStorage.removeItem('i18nextLng');
 
+        setCurrentUser(null);
     }
 
     useEffect(() => {

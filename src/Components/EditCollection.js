@@ -7,6 +7,8 @@ import { AuthContext } from '../context/AuthContext';
 
 
 const EditCollection = () => {
+    // const URL = 'http://localhost:5001/api/posts';
+    const URL = 'https://itransistion-project-be.herokuapp.com/api/posts';
 
     const options = [
         { value: 'shoes', label: 'shoes' },
@@ -33,7 +35,7 @@ const EditCollection = () => {
         e.preventDefault();
 
         try {
-            await axios.put(`http://localhost:5001/api/posts/${postID}`, { name, description, topic, img, postID, userID });
+            await axios.put(`${URL}/${postID}`, { name, description, topic, img, postID, userID });
         } catch (err) {
             console.log(err);
         }

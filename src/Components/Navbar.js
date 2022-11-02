@@ -40,7 +40,7 @@ const Navbar = () => {
             </div>
             <div className='space-x-4'>
                 {currentUser ?
-                    <a href='/' onClick={logout} className="rounded-lg px-3 py-2 text-[#14213d] font-medium bg-[#e5e5e5] hover:bg-[#f6f6f6] hover:text-[#14213d]">{t('navbar.logout')}</a> :
+                    <a href='/logout' onClick={logout} className="rounded-lg px-3 py-2 text-[#14213d] font-medium bg-[#e5e5e5] hover:bg-[#f6f6f6] hover:text-[#14213d]">{t('navbar.logout')}</a> :
                     <>
                         <a href='/login' className="rounded-lg px-3 py-2 text-[#14213d] font-medium bg-[#e5e5e5] hover:bg-[#f6f6f6] hover:text-[#14213d]">{t('navbar.login')}</a>
                         <a href='/signup' className="rounded-lg px-3 py-2 text-[#f0ebd8] font-medium bg-[#fca311] hover:bg-[#eb9200] hover:text-[#e0dac7]">{t('navbar.signup')}</a>

@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
-    // const URL = 'https://itransistion-project-be.herokuapp.com/api/auth/register';
-    const URL = 'http://localhost:5001/api/auth/register';
+    const URL = 'https://itransistion-project-be.herokuapp.com/api/auth/register';
+    // const URL = 'http://localhost:5001/api/auth/register';
 
     const navigate = useNavigate()
     const [inputs, setInputs] = useState({

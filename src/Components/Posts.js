@@ -5,8 +5,8 @@ import ImageContainer from "./ImageContainer";
 
 const Posts = (props) => {
 
-    const URL = 'http://localhost:5001';
-    // const URL = 'https://itransistion-project-be.herokuapp.com';
+    // const URL = 'http://localhost:5001';
+    const URL = 'https://itransistion-project-be.herokuapp.com';
 
     const [posts, setPosts] = useState([]);
 
